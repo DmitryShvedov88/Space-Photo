@@ -1,3 +1,7 @@
+#this script download fotos
+import requests
+
+
 def fetch_spacex_last_launch(find_url, i):
     print("find_url", find_url)
     filename = f'EPIC{i}.jpeg' #f'space_{value}.jpeg'
@@ -16,3 +20,4 @@ def fetch_spacex_last_launch(find_url, i):
             file.write(response.content)
     except:
         print("error")
+
