@@ -1,4 +1,4 @@
-#this script download fotos
+#this script download photo
 import requests
 
 
@@ -20,4 +20,3 @@ def fetch_spacex_last_launch(find_url, i):
             file.write(response.content)
     except:
         print("error")
-
