@@ -25,12 +25,6 @@ def fetch_spacex_last_launch(find_url, i):
             file.write(response.content)
     except:
         print("error")
-            
-
-
-
-
-         
         
 
     # links=text["links"]["flickr"]["original"]
@@ -68,7 +62,7 @@ def space_X(EPIC_pic, payload):
     texts = response.json()
     print("-------")
     #print(texts)
-    for i in range(len(texts)):
+    for i in range(3): #len(texts)
         name = texts[i]['image']
         #print("name: ", name)
         date = texts[i]['date']
@@ -139,11 +133,3 @@ def main():
     #для считывания EPIC ссылки
     EPIC_pic="https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY"
     space_X(EPIC_pic, payload)
-
-    
-    
-
-if __name__ == "__main__":
-    main()
-
-    
