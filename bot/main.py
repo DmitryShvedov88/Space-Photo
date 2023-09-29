@@ -5,5 +5,10 @@ load_dotenv(find_dotenv())
 
 
 TG_Token = os.getenv("TG_Token")
-bot = telegram.Bot(token = TG_Token)
-print(bot.get_me())
+chat_id = os.getenv("chat_id")
+bot = telegram.Bot(token=TG_Token)
+bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.")
+
+
+# if __name__ == "__main__":
+#     bot.polling(none_stop=True, interval=0)
