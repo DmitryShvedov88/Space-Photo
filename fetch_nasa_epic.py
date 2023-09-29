@@ -3,9 +3,9 @@ import requests
 from pathlib import Path
 
 
-def fetch_spacex_images(find_url, i):
+def fetch_nasa_epic(find_url, i):
     print("find_url", find_url)
-    filename = f'space_{i}.jpeg' #f'EPIC{i}.jpeg'
+    filename = f'epic_{i}.png'
     print(filename)
 #Создание папки, если ее не существует
     try:

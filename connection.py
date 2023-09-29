@@ -1,3 +1,5 @@
+from url_parser import url_parser
+
 def space_X(EPIC_pic, payload):
     response = requests.get(EPIC_pic, params=payload)
     print("response.url:", response.url)
