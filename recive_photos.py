@@ -59,8 +59,6 @@ def links_epic(EPIC_pic, payload, launch):
         except:
             continue
 
-    
-
 
 def main(typer, launch):
     from dotenv import load_dotenv, find_dotenv
