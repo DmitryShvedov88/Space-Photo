@@ -1,3 +1,5 @@
+Space Telegram
+
 This program made for education putpose
 It download photo from Nasa, Space_X and send it in telegram chanal
  
@@ -13,3 +15,12 @@ Enter --EPIC to get an EPIC photo from Space_X
 If the function does not receive arguments, then the photo of the last launch will be loaded.
 
 The second part sends photos from the list to the telegram channel. You can set the time how often the photos will be published. If you do not set a timer, by default it will happen once every 4 hours.
+
+
+How to install
+Python3 should already be installed.
+Use pip (or pip3, if there is a conflict with Python2) to install dependencies.
+pip install -r requirements.txt
+
+Project Goals
+The code is written for educational purposes on online-course for web-developers dvmn.org.
