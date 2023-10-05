@@ -4,7 +4,7 @@ import os
 def takeFiles():
     directory = "C:/Users/nivka/Desktop/Обучение Питон/Мои проекты/images"
     global name
-    images=[]
+    images = []
     try:
         filesindir = os.listdir(directory)
         for filesindirs in filesindir:
