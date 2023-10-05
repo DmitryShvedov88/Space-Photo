@@ -24,29 +24,28 @@ def main(timer):
                 time.sleep(timer)
                 image = images[i]
                 print(image)
-                i+=1
-                #bot.send_message(chat_id=chat_id, text="Dima, i'll sand to you photo.")
-                bot.send_document(chat_id=chat_id, document=open(f'{image}', 'rb'))
+                i += 1
+                bot.send_document(
+                    chat_id=chat_id, document=open(f'{image}', 'rb')
+                    )
         else:
             time.sleep(timer)
-            l = random.randint(0, (len(images)-1))
-            image = images[l]
-            print(image)
+            random_number = random.randint(0, (len(images)-1))
+            image = images[random_number]
             bot.send_document(chat_id=chat_id, document=open(f'{image}', 'rb'))
-            
-    #updates = bot.get_updates()
-    #print([u.message.photo for u in updates if u.message.photo])
-    
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии из деревтории в ТГ Бот'
         )
-    parser.add_argument('--Time', help='Введите --Time ожидания публикации', type=int)
+    parser.add_argument(
+        '--Time', help='Введите --Time ожидания публикации', type=int
+        )
     args = parser.parse_args()
     params = {
         "Time": args.Time,
-        } 
+        }
     for typer in params.items():
         if typer[1]:
             try:
