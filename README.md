@@ -20,7 +20,7 @@ The second part sends photos from the list to the telegram channel. You can set 
 How to install
 Python3 should already be installed.
 Use pip (or pip3, if there is a conflict with Python2) to install dependencies.
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
 Project Goals
 The code is written for educational purposes on online-course for web-developers dvmn.org.
