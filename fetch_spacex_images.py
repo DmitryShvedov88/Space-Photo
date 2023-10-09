@@ -4,9 +4,7 @@ from pathlib import Path
 
 
 def fetch_spacex_images(find_url, i):
-    print("find_url", find_url)
     filename = f'space_{i}.jpeg'
-    print(filename)
     try:
         path = Path(f"images/{filename}")
         path.parent.mkdir(parents=True, exist_ok=True)

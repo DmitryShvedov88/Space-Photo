@@ -4,9 +4,7 @@ from pathlib import Path
 
 
 def fetch_nasa_apod(find_url, date):
-    print("find_url", find_url)
     filename = f'nasa_apod{date}.jpeg'
-    print(filename)
     try:
         path = Path(f"images/{filename}")
         path.parent.mkdir(parents=True, exist_ok=True)
