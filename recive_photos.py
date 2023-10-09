@@ -82,7 +82,6 @@ def main(typer, launch):
                 print("Скачивать нечего")
     if typer == "APOD":
         payload = {"api_key": os.getenv("Nasa_TOKEN"), "count": launch}
-# для считывания нескольких картинок APOD
         APOD_pic = f'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
         links = links_apod(APOD_pic, payload)
         print(links)
@@ -97,6 +96,5 @@ def main(typer, launch):
             print("Скачивать нечего")
     if typer == "EPIC":
         payload = {"api_key": os.getenv("Nasa_TOKEN")}
-# для считывания нескольких картинок APOD
         EPIC_pic = "https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY"
         links = links_epic(EPIC_pic, payload, launch)
