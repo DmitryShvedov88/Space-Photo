@@ -10,8 +10,14 @@ The second part is the publication of them in the Telegram channel.
 ### To upload a photo, you are given the opportunity to see what kind of photos they will be.
 
 Enter --ID_launch launch number for a photo from the NASA Website
-Enter --POD and the number of photos to download for the Space_X Site
+    python main.py --ID_launch dfadfaf
+    
+Enter --APOD and the number of photos to download for the Space_X Site
+    python main.py --APOD 2
+    
 Enter --EPIC to get an EPIC photo from Space_X
+    python main.py --EPIC 2
+    
 If the function does not receive arguments, then the photo of the last launch will be loaded.
 
 The second part sends photos from the list to the telegram channel. You can set the time how often the photos will be published. If you do not set a timer, by default it will happen once every 4 hours.
@@ -22,6 +28,6 @@ Python3 should already be installed.
 Use pip (or pip3, if there is a conflict with Python2) to install dependencies.
     
     pip install -r requirements.txt
-    
+
 ### Project Goals
 The code is written for educational purposes on online-course for web-developers dvmn.org.
