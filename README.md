@@ -10,12 +10,15 @@ The second part is the publication of them in the Telegram channel.
 ### To upload a photo, you are given the opportunity to see what kind of photos they will be.
 
 Enter --ID_launch launch number for a photo from the NASA Website
+    
     python main.py --ID_launch dfadfaf
     
 Enter --APOD and the number of photos to download for the Space_X Site
+    
     python main.py --APOD 2
     
 Enter --EPIC to get an EPIC photo from Space_X
+    
     python main.py --EPIC 2
     
 If the function does not receive arguments, then the photo of the last launch will be loaded.
