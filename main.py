@@ -6,8 +6,8 @@ if __name__ == "__main__":
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
     parser.add_argument('--ID_launch', help='Введите --ID_launch номер запуска', type=str)
-    parser.add_argument('--APOD', help='Введите --APOD и кол фотографий для скачивания', const=1, type=int)
-    parser.add_argument('--EPIC', help='Введите --EPIC', const=1, type=int)
+    parser.add_argument('--APOD', help='Введите --APOD и кол фотографий для скачивания', launch=1, type=int)
+    parser.add_argument('--EPIC', help='Введите --EPIC', launch=1, type=int)
     args = parser.parse_args()
     params = {
         "ID_launch": args.ID_launch,
