@@ -51,7 +51,7 @@ def links_epic(EPIC_pic, payload, count):
             continue
 
 
-def main(typer, launch):
+def argument_handler(typer, launch):
     from dotenv import load_dotenv, find_dotenv
     load_dotenv(find_dotenv())
     if typer == "ID_launch" or typer is None:

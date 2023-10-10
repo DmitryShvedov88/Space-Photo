@@ -1,5 +1,5 @@
 import argparse
-from recive_photos import main
+from recive_photos import argument_handler
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -17,10 +17,10 @@ if __name__ == "__main__":
     for typer in params.items():
         if typer[1]:
             try:
-                main(typer[0], typer[1])
+                argument_handler(typer[0], typer[1])
             except:
                 print("Ошика ввода")
     if params["ID_launch"] is None and params["APOD"] is None and params["EPIC"] is None:
         typer = None
         launch = None
-        main(typer, launch)
+        argument_handler(typer, launch)
