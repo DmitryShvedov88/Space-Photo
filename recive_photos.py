@@ -103,8 +103,8 @@ def argument_handler(typer, launch):
     load_dotenv(find_dotenv())
     if typer == "ID_launch" or typer is None:
         conect_spacex(typer, launch)
-    elif typer == "APOD":
+    if typer == "APOD":
         conect_NASA_APOD(typer, launch)
-    elif typer == "EPIC":
+    if typer == "EPIC":
         conect_NASA_EPIC(typer, launch)
         
