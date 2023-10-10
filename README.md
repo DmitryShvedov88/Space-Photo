@@ -1,7 +1,7 @@
 ## [Space Telegram](https://github.com/DmitryShvedov88/Space-Photo/blob/main/README.md#space-telegram "LINK TO THE PROJECT")
 
 This program made for education putpose
-It download photo from Nasa, Space_X and send it in telegram chanal
+It download photo from [Nasa](https://www.nasa.gov/), [Space_X](https://www.spacex.com/) and send it in telegram chanal
  
 This program consists of two parts.
 The first part is a program that allows you to upload photos on specified topics from NASA and SpaceX websites.
