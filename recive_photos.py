@@ -1,10 +1,7 @@
 import datetime
 import requests
 import os
-from fetch_spacex_images import fetch_spacex_images
-from fetch_nasa_apod import fetch_nasa_apod
-from fetch_nasa_epic import fetch_nasa_epic
-
+from download_image import download_image
 
 def links_id(all_starts) -> list:
     response = requests.get(all_starts)
