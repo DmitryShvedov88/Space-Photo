@@ -31,7 +31,7 @@ def links_apod(APOD_pic, payload) -> list:
     return links
 
 
-def links_epic(EPIC_pic, payload, count):
+def links_epic(typer, EPIC_pic, payload, count):
     response = requests.get(EPIC_pic, params=payload)
     print("response.url:", response.url)
     print("response.status_code:", response.status_code)
@@ -43,7 +43,7 @@ def links_epic(EPIC_pic, payload, count):
             date = datetime.datetime.fromisoformat(date)
             date = date.strftime("%Y/%m/%d")
             find_url = f'https://api.nasa.gov/EPIC/archive/natural/{date}/png/{name}.png?api_key=DEMO_KEY'
-            fetch_nasa_epic(find_url, date)
+            download_image(typer, find_url, date)
         except:
             continue
 
@@ -59,7 +59,7 @@ def argument_handler(typer, launch):
                 for i in range(len(links)-3):
                     try:
                         foto = links[i]
-                        fetch_spacex_images(foto, i)
+                        download_image(typer, foto, i)
                     except:
                         continue
             else:
@@ -72,7 +72,7 @@ def argument_handler(typer, launch):
                 for i in range(len(links)-3):
                     try:
                         foto = links[i]
-                        fetch_spacex_images(foto, i)
+                        download_image(typer, foto, i)
                     except:
                         continue
             else:
@@ -86,7 +86,7 @@ def argument_handler(typer, launch):
             for i in range(len(links)):
                 try:
                     find_url = links[i]
-                    fetch_nasa_apod(find_url, i)
+                    download_image(typer, find_url, i)
                 except:
                     continue
         else:
@@ -94,4 +94,4 @@ def argument_handler(typer, launch):
     if typer == "EPIC":
         payload = {"api_key": os.getenv("Nasa_TOKEN")}
         EPIC_pic = "https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY"
-        links = links_epic(EPIC_pic, payload, launch)
+        links = links_epic(typer, EPIC_pic, payload, launch)
