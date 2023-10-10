@@ -6,8 +6,8 @@ if __name__ == "__main__":
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
     parser.add_argument('--ID_launch', help='Введите --ID_launch номер запуска', type=str)
-    parser.add_argument('--APOD', help='Введите --APOD и кол фотографий для скачивания', type=int)
-    parser.add_argument('--EPIC', help='Введите --EPIC', type=int)
+    parser.add_argument('--APOD', help='Введите --APOD и кол фотографий для скачивания', const=1, type=int)
+    parser.add_argument('--EPIC', help='Введите --EPIC', const=1, type=int)
     args = parser.parse_args()
     params = {
         "ID_launch": args.ID_launch,
@@ -19,7 +19,7 @@ if __name__ == "__main__":
             try:
                 argument_handler(typer[0], typer[1])
             except:
-                print("Ошика ввода")
+                print("Ошибка ввода")
     if params["ID_launch"] is None and params["APOD"] is None and params["EPIC"] is None:
         typer = None
         launch = None
