@@ -3,13 +3,14 @@ import requests
 import os
 from download_image import download_image
 
-def links_id(all_starts) -> list:
+
+def take_links_id(all_starts) -> list:
     response = requests.get(all_starts)
     print("response.status_code:", response.status_code)
     print("response.raise_for_status():", response.raise_for_status())
     text = response.json()
     links = text["links"]["flickr"]["original"]
-    if len(links) == 0:
+    if links is False:
         print("Фото не делались")
 
     else:
@@ -33,8 +34,6 @@ def links_apod(APOD_pic, payload) -> list:
 
 def links_epic(typer, EPIC_pic, payload, count):
     response = requests.get(EPIC_pic, params=payload)
-    print("response.url:", response.url)
-    print("response.status_code:", response.status_code)
     texts = response.json()
     for i in range(count):
         try:
@@ -51,7 +50,7 @@ def links_epic(typer, EPIC_pic, payload, count):
 def conect_spacex(typer, launch):
     if launch is None:
             last_launch = "https://api.spacexdata.com/v5/launches/latest"
-            links = links_id(last_launch)
+            links = take_links_id(last_launch)
             if len(links) > 0:
                 for i in range(len(links)-3):
                     try:
@@ -62,9 +61,8 @@ def conect_spacex(typer, launch):
             else:
                 print("Скачивать нечего")
     else:
-        print(launch)
         launch = f"https://api.spacexdata.com/v5/launches/{launch}"
-        links = links_id(launch)
+        links = take_links_id(launch)
         if len(links) > 0:
             for i in range(len(links)-3):
                 try:
@@ -78,13 +76,12 @@ def conect_spacex(typer, launch):
 
 def conect_NASA_APOD(typer, launch):
     payload = {"api_key": os.getenv("Nasa_TOKEN"), "count": launch}
-    APOD_pic = f'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
-    links = links_apod(APOD_pic, payload)
-    print(links)
-    if len(links) > 0:
-        for i in range(len(links)):
+    apod_pic = f'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
+    apod_info = links_apod(apod_pic, payload)
+    if len(apod_info) > 0:
+        for i in range(len(apod_info)):
             try:
-                find_url = links[i]
+                find_url = apod_info[i]
                 download_image(typer, find_url, i)
             except:
                 continue
@@ -92,7 +89,7 @@ def conect_NASA_APOD(typer, launch):
         print("Скачивать нечего")
 
 
-def conect_NASA_EPIC(typer, launch)
+def conect_NASA_EPIC(typer, launch):
         payload = {"api_key": os.getenv("Nasa_TOKEN")}
         EPIC_pic = "https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY"
         links = links_epic(typer, EPIC_pic, payload, launch)
@@ -107,4 +104,3 @@ def argument_handler(typer, launch):
         conect_NASA_APOD(typer, launch)
     if typer == "EPIC":
         conect_NASA_EPIC(typer, launch)
-        

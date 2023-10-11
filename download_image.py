@@ -13,6 +13,7 @@ def download_image(typer, find_url, i):
         path = Path(f"images/{filename}")
         path.parent.mkdir(parents=True, exist_ok=True)
         response = requests.get(find_url)
+        print(response.status_code)
         with open(path, 'wb') as file:
             file.write(response.content)
     except requests.HTTPError:
