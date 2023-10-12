@@ -5,6 +5,7 @@ from download_image import download_image
 
 
 def take_links_id(all_starts) -> list:
+    print(all_starts)
     response = requests.get(all_starts)
     print("response.status_code:", response.status_code)
     print("response.raise_for_status():", response.raise_for_status())
@@ -23,7 +24,7 @@ def take_links_id(all_starts) -> list:
 def links_apod(APOD_pic, payload) -> list:
     response = requests.get(APOD_pic, params=payload)
     print("response.url:", response.url)
-    print("response.raise_for_status():", response.raise_for_status())
+    print("response.status_code", response.status_code)
     texts = response.json()
     links = list()
     for text in texts:
@@ -34,6 +35,8 @@ def links_apod(APOD_pic, payload) -> list:
 
 def links_epic(typer, EPIC_pic, payload, count):
     response = requests.get(EPIC_pic, params=payload)
+    print(response)
+    print("response.raise_for_status():", response.raise_for_status())
     texts = response.json()
     for i in range(count):
         try:
@@ -48,7 +51,8 @@ def links_epic(typer, EPIC_pic, payload, count):
 
 
 def conect_spacex(typer, launch):
-    if launch is None:
+    if launch == "None":
+            print(typer, launch)
             last_launch = "https://api.spacexdata.com/v5/launches/latest"
             links = take_links_id(last_launch)
             if len(links) > 0:
@@ -76,7 +80,7 @@ def conect_spacex(typer, launch):
 
 def conect_NASA_APOD(typer, launch):
     payload = {"api_key": os.getenv("Nasa_TOKEN"), "count": launch}
-    apod_pic = f'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
+    apod_pic = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
     apod_info = links_apod(apod_pic, payload)
     if len(apod_info) > 0:
         for i in range(len(apod_info)):
