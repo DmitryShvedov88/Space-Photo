@@ -7,7 +7,7 @@ if __name__ == "__main__":
         )
     parser.add_argument('--EPIC', help='Введите --EPIC', type=int, default=1)
     args = parser.parse_args()
-    args = format(args.EPIC)
+    args = args.EPIC
     typer = "EPIC"
     try:
         argument_handler(typer, args)
@@ -15,5 +15,5 @@ if __name__ == "__main__":
         print("Ошибка ввода")
     if args is None:
         typer = None
-        launch = None
-        argument_handler(typer, launch)
+        count = None
+        argument_handler(typer, count)

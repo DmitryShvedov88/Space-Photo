@@ -7,7 +7,7 @@ if __name__ == "__main__":
         )
     parser.add_argument('--APOD', help='Введите --APOD и кол фотографий для скачивания', type=int, default=1)
     args = parser.parse_args()
-    args = format(args.APOD)
+    args = args.APOD
     typer = "APOD"
     try:
         argument_handler(typer, args)
