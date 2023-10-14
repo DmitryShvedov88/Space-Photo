@@ -14,7 +14,7 @@ if __name__ == "__main__":
             argument_handler(typer, args)
         except:
             print("Ошибка ввода")
-
+    
     if args is None:
         typer = None
         launch = None

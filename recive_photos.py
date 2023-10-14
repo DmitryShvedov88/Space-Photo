@@ -4,28 +4,37 @@ import os
 from download_image import download_image
 
 
-def take_links_id(all_starts) -> list:
+def take_links_id(typer, all_starts) -> list:
     response = requests.get(all_starts)
     text = response.json()
     links = text["links"]["flickr"]["original"]
     if links is False:
-        print("Фото не делались")
+        print("Ссылок нет")
 
     else:
-        print("Фото есть")
+        print("Ссылки есть")
         links = text["links"]["flickr"]["original"]
-
-    return links
+        if len(links) > 0:
+            for i in range(len(links)-3):
+                try:
+                    foto = links[i]
+                    download_image(typer, foto, i)
+                except:
+                    continue
+        else:
+            print("Скачивать нечего")
+   
 
 
 def links_apod(APOD_pic, payload) -> list:
     response = requests.get(APOD_pic, params=payload)
+    response.raise_for_status()
     texts = response.json()
     links = list()
     for text in texts:
         url = text["url"]
         links.append(url)
-    return links
+    return [links, texts]
 
 
 def links_epic(typer, EPIC_pic, payload, count):
@@ -45,30 +54,16 @@ def links_epic(typer, EPIC_pic, payload, count):
 
 def conect_spacex(typer, launch):
     if launch == "None":
-            print(typer, launch)
-            last_launch = "https://api.spacexdata.com/v5/launches/latest"
-            links = take_links_id(last_launch)
-            if len(links) > 0:
-                for i in range(len(links)-3):
-                    try:
-                        foto = links[i]
-                        download_image(typer, foto, i)
-                    except:
-                        continue
-            else:
-                print("Скачивать нечего")
+        last_launch = "https://api.spacexdata.com/v5/launches/latest"
+        response = requests.get(last_launch)
+        response.raise_for_status()
+        take_links_id(typer, last_launch)
     else:
         launch = f"https://api.spacexdata.com/v5/launches/{launch}"
-        links = take_links_id(launch)
-        if len(links) > 0:
-            for i in range(len(links)-3):
-                try:
-                    foto = links[i]
-                    download_image(typer, foto, i)
-                except:
-                    continue
-        else:
-            print("Скачивать нечего")
+        response = requests.get(last_launch)
+        response.raise_for_status()
+        take_links_id(typer, launch)
+    return response.json()
 
 
 def conect_NASA_APOD(typer, launch):
@@ -96,8 +91,17 @@ def argument_handler(typer, launch):
     from dotenv import load_dotenv, find_dotenv
     load_dotenv(find_dotenv())
     if typer == "ID_launch" or typer is None:
-        conect_spacex(typer, launch)
+        try:
+            conect_spacex(typer, launch)
+        except requests.exceptions.HTTPError:
+            print("Ошибка подключения")
     if typer == "APOD":
-        conect_NASA_APOD(typer, launch)
+        try:
+            conect_NASA_APOD(typer, launch)
+        except requests.exceptions.HTTPError:
+            print("Ошибка подключения")
     if typer == "EPIC":
-        conect_NASA_EPIC(typer, launch)
+        try:
+            conect_NASA_EPIC(typer, launch)
+        except requests.exceptions.HTTPError:
+            print("Ошибка подключения")
