@@ -69,7 +69,7 @@ def conect_spacex(typer, launch):
 
 def conect_NASA_APOD(typer, launch):
     payload = {"api_key": os.getenv("Nasa_TOKEN"), "count": launch}
-    apod_pic = 'https://api.nasa.gov/planetary/apo?api_key=DEMO_KEY'
+    apod_pic = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
     apod_info = links_apod(apod_pic, payload)
     error_connection = apod_info[1]
     apod_info = apod_info[0]
@@ -87,11 +87,11 @@ def conect_NASA_APOD(typer, launch):
 
 
 def conect_NASA_EPIC(typer, count):
-        payload = {"api_key": os.getenv("Nasa_TOKEN")}
-        EPIC_pic = "https://api.nasa.gov/EPI/api/natural/images?api_key=DEMO_KEY"
-        error_connection = links_epic(typer, EPIC_pic, payload, count)
-        print("error_connection", error_connection)
-        return error_connection
+    payload = {"api_key": os.getenv("Nasa_TOKEN")}
+    EPIC_pic = "https://api.nasa.gov/EPIС/api/natural/images?api_key=DEMO_KEY"
+    error_connection = links_epic(typer, EPIC_pic, payload, count)
+    print("error_connection", error_connection)
+   
 
 def argument_handler(typer, launch):
     from dotenv import load_dotenv, find_dotenv
