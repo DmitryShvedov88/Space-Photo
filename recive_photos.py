@@ -36,9 +36,9 @@ def links_apod(APOD_pic, payload) -> list:
     return [links, texts]
 
 
-def links_epic(typer, EPIC_pic, payload, count):
+def links_epic(typer, EPIC_pic, payload, count) -> list:
     response = requests.get(EPIC_pic, params=payload)
-    print(response.status_code)
+    response.raise_for_status()
     texts = response.json()
     for i in range(count):
         try:
@@ -46,11 +46,11 @@ def links_epic(typer, EPIC_pic, payload, count):
             date = texts[i]["date"]
             date = datetime.datetime.fromisoformat(date)
             date = date.strftime("%Y/%m/%d")
-            find_url = f'https://api.nasa.gov/EPIC/archive/natural/{date}/png/{name}.png?api_key=DEMO_KEY'
+            find_url = f'https://api.nasa.gov/EPIС/archive/natural/{date}/png/{name}.png?api_key=DEMO_KEY'
             download_image(typer, find_url, date)
         except:
             continue
-    return response.json()
+    
 
 
 def conect_spacex(typer, launch):
@@ -69,7 +69,7 @@ def conect_spacex(typer, launch):
 
 def conect_NASA_APOD(typer, launch):
     payload = {"api_key": os.getenv("Nasa_TOKEN"), "count": launch}
-    apod_pic = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
+    apod_pic = 'https://api.nasa.gov/planetary/apo?api_key=DEMO_KEY'
     apod_info = links_apod(apod_pic, payload)
     error_connection = apod_info[1]
     apod_info = apod_info[0]
@@ -83,15 +83,13 @@ def conect_NASA_APOD(typer, launch):
                 continue
     else:
         print("Скачивать нечего")
-    return error_connection
-
+        
 
 def conect_NASA_EPIC(typer, count):
     payload = {"api_key": os.getenv("Nasa_TOKEN")}
-    EPIC_pic = "https://api.nasa.gov/EPIС/api/natural/images?api_key=DEMO_KEY"
-    error_connection = links_epic(typer, EPIC_pic, payload, count)
-    print("error_connection", error_connection)
-   
+    EPIC_pic = "https://api.nasa.gov/EPI/api/natural/images?api_key=DEMO_KEY"
+    links_epic(typer, EPIC_pic, payload, count)
+    
 
 def argument_handler(typer, launch):
     from dotenv import load_dotenv, find_dotenv
