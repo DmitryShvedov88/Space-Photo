@@ -1,5 +1,39 @@
+import requests
 import argparse
-from recive_photos import argument_handler
+import os
+from recive_photos import links_apod
+from dotenv import load_dotenv, find_dotenv
+from download_image import download_image
+load_dotenv(find_dotenv())
+
+
+def conect_NASA_APOD(typer, launch):
+    payload = {"api_key": os.getenv("Nasa_TOKEN"), "count": launch}
+    apod_pic = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
+    apod_info = links_apod(apod_pic, payload)
+    error_connection = apod_info[1]
+    apod_info = apod_info[0]
+
+    if len(apod_info) > 0:
+        for i in range(len(apod_info)):
+            try:
+                find_url = apod_info[i]
+                photo_format = "jpeg"
+                download_image(typer, photo_format, find_url, i)
+            except:
+                continue
+    else:
+        print("Скачивать нечего")
+
+
+def main(typer, launch):
+    if typer == "APOD":
+        try:
+            conect_NASA_APOD(typer, launch)
+        except requests.exceptions.HTTPError:
+            print("Ошибка подключения")
+
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -10,10 +44,10 @@ if __name__ == "__main__":
     args = args.APOD
     typer = "APOD"
     try:
-        argument_handler(typer, args)
+        main(typer, args)
     except:
         print("Ошибка ввода")
     if args is None:
         typer = None
         launch = None
-        argument_handler(typer, launch)
+        main(typer, launch)

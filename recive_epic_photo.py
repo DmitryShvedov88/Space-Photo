@@ -1,5 +1,24 @@
+import requests
 import argparse
-from recive_photos import argument_handler
+import os
+from dotenv import load_dotenv, find_dotenv
+from recive_photos import links_epic
+load_dotenv(find_dotenv())
+
+
+def conect_NASA_EPIC(typer, count):
+    payload = {"api_key": os.getenv("Nasa_TOKEN")}
+    EPIC_pic = "https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY"
+    links_epic(typer, EPIC_pic, payload, count)
+
+
+def main(typer, args):
+    if typer == "EPIC":
+        try:
+            conect_NASA_EPIC(typer, args)
+        except requests.exceptions.HTTPError:
+            print("Ошибка подключения")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -10,10 +29,10 @@ if __name__ == "__main__":
     args = args.EPIC
     typer = "EPIC"
     try:
-        argument_handler(typer, args)
+        main(typer, args)
     except:
         print("Ошибка ввода")
     if args is None:
         typer = None
         count = None
-        argument_handler(typer, count)
+        main(typer, count)

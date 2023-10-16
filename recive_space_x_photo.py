@@ -1,5 +1,25 @@
+import requests
 import argparse
-from recive_photos import argument_handler
+from recive_photos import take_links_id
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
+
+def conect_spacex(typer, launch):
+    if launch == "None":
+        last_launch = "https://api.spacexdata.com/v5/launches/latest"
+        take_links_id(typer, last_launch)
+    else:
+        launch_number = f"https://api.spacexdata.com/v5/launches/{launch}"
+        take_links_id(typer, launch_number)
+
+
+def main(typer, launch):
+    try:
+        conect_spacex(typer, launch)
+    except requests.exceptions.HTTPError:
+        print("Ошибка подключения")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -11,11 +31,10 @@ if __name__ == "__main__":
     typer = "ID_launch"
     if args:
         try:
-            argument_handler(typer, args)
+            main(typer, args)
         except:
             print("Ошибка ввода")
-    
     if args is None:
         typer = None
         launch = None
-        argument_handler(typer, launch)
+        main(typer, launch)
