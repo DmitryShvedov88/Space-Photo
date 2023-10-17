@@ -7,6 +7,7 @@ load_dotenv(find_dotenv())
 
 
 def conect_NASA_EPIC(typer, count):
+    print(typer, count)
     payload = {"api_key": os.getenv("Nasa_TOKEN")}
     EPIC_pic = "https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY"
     links_epic(typer, EPIC_pic, payload, count)
@@ -24,7 +25,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
-    parser.add_argument('--EPIC', help='Введите --EPIC', type=int, default=1)
+    parser.add_argument('EPIC', help='Введите --EPIC', type=int, default=1)
     args = parser.parse_args()
     args = args.EPIC
     typer = "EPIC"

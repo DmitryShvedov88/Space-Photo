@@ -1,3 +1,4 @@
+import sys
 import requests
 import argparse
 from recive_photos import take_links_id
@@ -25,7 +26,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
-    parser.add_argument('--ID_launch', help='Введите --ID_launch номер запуска', type=str)
+    parser.add_argument('ID_launch', help='Введите --ID_launch номер запуска', type=str)
     args = parser.parse_args()
     args = format(args.ID_launch)
     typer = "ID_launch"
@@ -38,3 +39,8 @@ if __name__ == "__main__":
         typer = None
         launch = None
         main(typer, launch)
+
+
+
+
+

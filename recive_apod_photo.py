@@ -39,7 +39,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
-    parser.add_argument('--APOD', help='Введите --APOD и кол фотографий для скачивания', type=int, default=1)
+    parser.add_argument('APOD', help='Введите --APOD и кол фотографий для скачивания', type=int, default=1)
     args = parser.parse_args()
     args = args.APOD
     typer = "APOD"

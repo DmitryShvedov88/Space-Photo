@@ -38,6 +38,7 @@ def links_apod(APOD_pic, payload) -> list:
 
 def links_epic(typer, EPIC_pic, payload, count) -> list:
     response = requests.get(EPIC_pic, params=payload)
+    print("response.status_code", response.status_code)
     response.raise_for_status()
     print("response.status_code", response.status_code)
     texts = response.json()
@@ -48,7 +49,7 @@ def links_epic(typer, EPIC_pic, payload, count) -> list:
             date = datetime.datetime.fromisoformat(date)
             date = date.strftime("%Y/%m/%d")
             print(name, date)
-            find_url = f'https://api.nasa.gov/EPIС/archive/natural/{date}/png/{name}.png?api_key=DEMO_KEY'
+            find_url = f'https://api.nasa.gov/EPIC/archive/natural/{date}/png/{name}.png?api_key=DEMO_KEY'
             photo_format = "png"
             print(find_url)
             download_image(typer, photo_format, find_url, date)
