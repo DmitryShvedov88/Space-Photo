@@ -26,7 +26,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
-    parser.add_argument('ID_launch', help='Введите --ID_launch номер запуска', type=str)
+    parser.add_argument('--ID_launch', help='Введите --ID_launch номер запуска', type=str, default=None)
     args = parser.parse_args()
     args = format(args.ID_launch)
     typer = "ID_launch"
@@ -34,13 +34,4 @@ if __name__ == "__main__":
         try:
             main(typer, args)
         except:
-            print("Ошибка ввода")
-    if args is None:
-        typer = None
-        launch = None
-        main(typer, launch)
-
-
-
-
-
+            print("ошибка ввода")

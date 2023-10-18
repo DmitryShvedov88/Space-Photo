@@ -13,13 +13,11 @@ def conect_NASA_APOD(typer, launch):
     apod_info = links_apod(apod_pic, payload)
     error_connection = apod_info[1]
     apod_info = apod_info[0]
-
     if len(apod_info) > 0:
-        for i in range(len(apod_info)):
+        for i, apod in enumerate(apod_info):
             try:
-                find_url = apod_info[i]
                 photo_format = "jpeg"
-                download_image(typer, photo_format, find_url, i)
+                download_image(typer, photo_format, apod, i)
             except:
                 continue
     else:
@@ -39,7 +37,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
-    parser.add_argument('APOD', help='Введите --APOD и кол фотографий для скачивания', type=int, default=1)
+    parser.add_argument('APOD', help='Введите APOD и кол фотографий для скачивания', type=int, default=1)
     args = parser.parse_args()
     args = args.APOD
     typer = "APOD"
@@ -47,7 +45,3 @@ if __name__ == "__main__":
         main(typer, args)
     except:
         print("Ошибка ввода")
-    if args is None:
-        typer = None
-        launch = None
-        main(typer, launch)

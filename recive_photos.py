@@ -14,14 +14,10 @@ def take_links_id(typer, all_starts) -> list:
     else:
         print("Ссылки есть")
         links = text["links"]["flickr"]["original"]
-        if len(links) > 0:
-            for i in range(len(links)-3):
-                try:
-                    foto = links[i]
-                    download_image(typer, photo_format, foto, i)
-                except:
-                    continue
-        else:
+        try:
+            for i, foto in enumerate(links):
+                download_image(typer, photo_format, foto, i)
+        except:
             print("Скачивать нечего")
 
 
