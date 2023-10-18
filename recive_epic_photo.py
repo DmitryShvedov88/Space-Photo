@@ -8,8 +8,8 @@ load_dotenv(find_dotenv())
 
 def conect_NASA_EPIC(typer, count):
     print(typer, count)
-    payload = {"api_key": os.getenv("Nasa_TOKEN")}
-    EPIC_pic = "https://api.nasa.gov/EPIC/api/natural/images?api_key=DEMO_KEY"
+    payload = {"api_key": os.getenv("NASA_TOKEN")}
+    EPIC_pic = "https://api.nasa.gov/EPIC/api/natural/images"
     links_epic(typer, EPIC_pic, payload, count)
 
 
@@ -31,8 +31,8 @@ if __name__ == "__main__":
     typer = "EPIC"
     try:
         main(typer, args)
-    except:
-        print("Ошибка ввода")
+    except SyntaxError:
+        print("SyntaxError ошибка ввода")
     if args is None:
         typer = None
         count = None

@@ -1,4 +1,3 @@
-import sys
 import requests
 import argparse
 from recive_photos import take_links_id
@@ -33,5 +32,5 @@ if __name__ == "__main__":
     if args:
         try:
             main(typer, args)
-        except:
-            print("ошибка ввода")
+        except SyntaxError:
+            print("SyntaxError ошибка ввода")

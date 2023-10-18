@@ -8,9 +8,10 @@ load_dotenv(find_dotenv())
 
 
 def conect_NASA_APOD(typer, launch):
-    payload = {"api_key": os.getenv("Nasa_TOKEN"), "count": launch}
-    apod_pic = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
+    payload = {"api_key": os.getenv("NASA_TOKEN"), "count": launch}
+    apod_pic = 'https://api.nasa.gov/planetary/apod'
     apod_info = links_apod(apod_pic, payload)
+    print(apod_info)
     error_connection = apod_info[1]
     apod_info = apod_info[0]
     if apod_info:
@@ -44,5 +45,5 @@ if __name__ == "__main__":
     typer = "APOD"
     try:
         main(typer, args)
-    except:
-        print("Ошибка ввода")
+    except SyntaxError:
+        print("SyntaxError ошибка ввода")

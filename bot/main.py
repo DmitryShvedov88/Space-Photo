@@ -9,8 +9,8 @@ from image_taker import takeFiles
 load_dotenv(find_dotenv())
 
 
-TG_Token = os.getenv("TG_Token")
-chat_id = os.getenv("chat_id")
+TG_Token = os.getenv("TG_TOKEN")
+chat_id = os.getenv("CHAT_ID")
 bot = telegram.Bot(token=TG_Token)
 
 
