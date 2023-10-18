@@ -13,15 +13,16 @@ def conect_NASA_APOD(typer, launch):
     apod_info = links_apod(apod_pic, payload)
     error_connection = apod_info[1]
     apod_info = apod_info[0]
-    if len(apod_info) > 0:
-        for i, apod in enumerate(apod_info):
-            try:
+    if apod_info:
+        print("Ссылки есть")
+        try:
+            for i, apod in enumerate(apod_info):
                 photo_format = "jpeg"
                 download_image(typer, photo_format, apod, i)
-            except:
-                continue
+        except:
+            print("Скачивать нечего")
     else:
-        print("Скачивать нечего")
+        print("Ссылок нет")
 
 
 def main(typer, launch):

@@ -9,9 +9,7 @@ def take_links_id(typer, all_starts) -> list:
     text = response.json()
     links = text["links"]["flickr"]["original"]
     photo_format = "jpeg"
-    if links is False:
-        print("Ссылок нет")
-    else:
+    if links:
         print("Ссылки есть")
         links = text["links"]["flickr"]["original"]
         try:
@@ -19,6 +17,8 @@ def take_links_id(typer, all_starts) -> list:
                 download_image(typer, photo_format, foto, i)
         except:
             print("Скачивать нечего")
+    else:
+        print("Ссылок нет")
 
 
 def links_apod(APOD_pic, payload) -> list:
