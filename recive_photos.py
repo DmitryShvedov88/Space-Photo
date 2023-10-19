@@ -44,10 +44,8 @@ def links_epic(typer, EPIC_pic, payload, count) -> list:
             date = texts[i]["date"]
             date = datetime.datetime.fromisoformat(date)
             date = date.strftime("%Y/%m/%d")
-            print(name, date)
             find_url = f'https://api.nasa.gov/EPIC/archive/natural/{date}/png/{name}.png'
             photo_format = "png"
-            print(find_url)
             download_image(typer, photo_format, find_url, date)
         except requests.exceptions.HTTPError:
             continue

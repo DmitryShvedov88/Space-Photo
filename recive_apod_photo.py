@@ -34,7 +34,6 @@ def main(typer, launch):
             print("Ошибка подключения")
 
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
