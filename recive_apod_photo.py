@@ -7,8 +7,7 @@ from download_image import download_image
 load_dotenv(find_dotenv())
 
 
-def conect_NASA_APOD(typer, launch):
-    payload = {"api_key": os.getenv("NASA_TOKEN"), "count": launch}
+def conect_NASA_APOD(typer, payload):
     apod_pic = 'https://api.nasa.gov/planetary/apod'
     apod_info = links_apod(apod_pic, payload)
     print(apod_info)
@@ -27,9 +26,10 @@ def conect_NASA_APOD(typer, launch):
 
 
 def main(typer, launch):
+    payload = {"api_key": os.getenv("NASA_TOKEN"), "count": launch}
     if typer == "APOD":
         try:
-            conect_NASA_APOD(typer, launch)
+            conect_NASA_APOD(typer, payload)
         except requests.exceptions.HTTPError:
             print("Ошибка подключения")
 
