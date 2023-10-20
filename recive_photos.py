@@ -21,8 +21,8 @@ def take_links_id(typer, all_starts) -> list:
         print("Ссылок нет")
 
 
-def links_apod(APOD_pic, payload) -> list:
-    response = requests.get(APOD_pic, params=payload)
+def take_links_apod(APOD_link, payload) -> list:
+    response = requests.get(APOD_link, params=payload)
     response.raise_for_status()
     texts = response.json()
     links = list()
@@ -32,8 +32,8 @@ def links_apod(APOD_pic, payload) -> list:
     return [links, texts]
 
 
-def links_epic(typer, EPIC_pic, payload, count) -> list:
-    response = requests.get(EPIC_pic, params=payload)
+def take_links_epic(typer, EPIC_link, payload, count) -> list:
+    response = requests.get(EPIC_link, params=payload)
     print("response.status_code", response.status_code)
     response.raise_for_status()
     print("response.status_code", response.status_code)

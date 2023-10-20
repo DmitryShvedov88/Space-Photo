@@ -1,15 +1,15 @@
 import requests
 import argparse
 import os
-from recive_photos import links_apod
+from recive_photos import take_links_apod
 from dotenv import load_dotenv, find_dotenv
 from download_image import download_image
 load_dotenv(find_dotenv())
 
 
 def conect_NASA_APOD(typer, payload):
-    apod_pic = 'https://api.nasa.gov/planetary/apod'
-    apod_info = links_apod(apod_pic, payload)
+    apod_link = 'https://api.nasa.gov/planetary/apod'
+    apod_info = take_links_apod(apod_link, payload)
     print(apod_info)
     error_connection = apod_info[1]
     apod_info = apod_info[0]

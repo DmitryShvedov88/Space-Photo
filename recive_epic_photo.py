@@ -2,15 +2,15 @@ import requests
 import argparse
 import os
 from dotenv import load_dotenv, find_dotenv
-from recive_photos import links_epic
+from recive_photos import take_links_epic
 load_dotenv(find_dotenv())
 
 
 def conect_NASA_EPIC(typer, count):
     print(typer, count)
     payload = {"api_key": os.getenv("NASA_TOKEN")}
-    EPIC_pic = "https://api.nasa.gov/EPIC/api/natural/images"
-    links_epic(typer, EPIC_pic, payload, count)
+    EPIC_link = "https://api.nasa.gov/EPIC/api/natural/images"
+    take_links_epic(typer, EPIC_link, payload, count)
 
 
 def main(typer, args):
