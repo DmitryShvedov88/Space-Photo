@@ -24,7 +24,11 @@ Third program: 'recive_epic_photo' enter number of EPIC photos you would to down
 If the function does not receive arguments, then the photo of the last launch will be loaded.
 
 The second part sends photos from the list to the telegram channel. You can set the time how often the photos will be published. If you do not set a timer, by default it will happen once every 4 hours.
+    python main.py --time <once in how many hours to send>
 
+### How to check
+A folder will be created on the computer in the selected directory and photos will be uploaded there.
+The second part sends photos in TG-chanel.
 
 ### How to install
 Python3 should already be installed.
