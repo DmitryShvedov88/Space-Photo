@@ -4,23 +4,22 @@ This program made for education putpose
 It download photo from [Nasa](https://www.nasa.gov/), [Space_X](https://www.spacex.com/) and send it in telegram chanal
  
 This program consists of two parts.
-The first part is a program that allows you to upload photos on specified topics from NASA and SpaceX websites.
+The first part is a three programs that allows you to upload photos on specified topics from NASA and SpaceX websites.
 The second part is the publication of them in the Telegram channel.
 
-### To upload a photo, you are given the opportunity to see what kind of photos they will be.
+### To upload a photo, you are given the opportunity to see what kind of photos they will be, using the necessary program.
 
-
-Enter --ID_launch launch number for a photo from the NASA Website
+First program: 'recive_space_x_photo' enter launch number for a photo from the SpaceX Website, if you don't, just start program, you will automatically get the newest.
     
-    python main.py --ID_launch dfadfaf
+    python recive_space_x_photo.py <launch number>
     
-Enter --APOD and the number of photos to download for the Space_X Site
+Second program: 'recive_apod_photo' enter number of APOD photos you would to download from NASA site.
     
-    python main.py --APOD 2
+    python recive_apod_photo.py <number of photos>
     
-Enter --EPIC to get an EPIC photo from Space_X
+Third program: 'recive_epic_photo' enter number of EPIC photos you would to download from NASA site.
     
-    python main.py --EPIC 2
+    python recive_epic_photo.py <number of photos>
     
 If the function does not receive arguments, then the photo of the last launch will be loaded.
 
