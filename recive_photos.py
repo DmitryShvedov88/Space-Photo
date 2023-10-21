@@ -26,10 +26,7 @@ def take_links_apod(apod_link, payload) -> list:
     response = requests.get(apod_link, params=payload)
     response.raise_for_status()
     texts = response.json()
-    links = list()
-    for text in texts:
-        url = text["url"]
-        links.append(url)
+    links = [text["url"] for text in texts]
     return [links, texts]
 
 
