@@ -1,9 +1,7 @@
 import requests
 import argparse
 import os
-from dotenv import load_dotenv, find_dotenv
 from recive_photos import take_links_epic
-load_dotenv(find_dotenv())
 
 
 def conect_NASA_EPIC(count):
@@ -20,6 +18,8 @@ def main(args):
 
 
 if __name__ == "__main__":
+    from dotenv import load_dotenv, find_dotenv
+    load_dotenv(find_dotenv())
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
