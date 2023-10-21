@@ -6,19 +6,17 @@ from recive_photos import take_links_epic
 load_dotenv(find_dotenv())
 
 
-def conect_NASA_EPIC(typer, count):
-    print(typer, count)
+def conect_NASA_EPIC(count):
     payload = {"api_key": os.getenv("NASA_TOKEN")}
     EPIC_link = "https://api.nasa.gov/EPIC/api/natural/images"
-    take_links_epic(typer, EPIC_link, payload, count)
+    take_links_epic(EPIC_link, payload, count)
 
 
-def main(typer, args):
-    if typer == "EPIC":
-        try:
-            conect_NASA_EPIC(typer, args)
-        except requests.exceptions.HTTPError:
-            print("Ошибка подключения")
+def main(args):
+    try:
+        conect_NASA_EPIC(args)
+    except requests.exceptions.HTTPError:
+        print("Ошибка подключения")
 
 
 if __name__ == "__main__":
@@ -28,12 +26,7 @@ if __name__ == "__main__":
     parser.add_argument('EPIC', help='Введите --EPIC', type=int, default=1)
     args = parser.parse_args()
     args = args.EPIC
-    typer = "EPIC"
     try:
-        main(typer, args)
+        main(args)
     except SyntaxError:
         print("SyntaxError ошибка ввода")
-    if args is None:
-        typer = None
-        count = None
-        main(typer, count)

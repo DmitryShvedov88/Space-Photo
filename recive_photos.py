@@ -3,18 +3,19 @@ import requests
 from download_image import download_image
 
 
-def take_links_id(typer, all_starts) -> list:
+def take_links_id(all_starts) -> list:
     response = requests.get(all_starts)
     response.raise_for_status()
     text = response.json()
     links = text["links"]["flickr"]["original"]
+    photo_name = "SpaceX"
     photo_format = "jpeg"
     if links:
         print("Ссылки есть")
         links = text["links"]["flickr"]["original"]
         try:
             for i, foto in enumerate(links):
-                download_image(typer, photo_format, foto, i)
+                download_image(photo_name, photo_format, foto, i)
         except NameError:
             print("Скачивать нечего")
     else:
@@ -32,7 +33,7 @@ def take_links_apod(apod_link, payload) -> list:
     return [links, texts]
 
 
-def take_links_epic(typer, epic_link, payload, count) -> list:
+def take_links_epic(epic_link, payload, count) -> list:
     response = requests.get(epic_link, params=payload)
     print("response.status_code", response.status_code)
     response.raise_for_status()
@@ -45,7 +46,8 @@ def take_links_epic(typer, epic_link, payload, count) -> list:
             date = datetime.datetime.fromisoformat(date)
             date = date.strftime("%Y/%m/%d")
             find_url = f'https://api.nasa.gov/EPIC/archive/natural/{date}/png/{name}.png'
+            photo_name = "EPIC"
             photo_format = "png"
-            download_image(typer, photo_format, find_url, date)
+            download_image(photo_name, photo_format, find_url, date)
         except requests.exceptions.HTTPError:
             continue

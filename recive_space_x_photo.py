@@ -5,18 +5,18 @@ from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
 
-def conect_spacex(typer, launch):
+def conect_spacex(launch):
     if launch == "None":
         last_launch = "https://api.spacexdata.com/v5/launches/latest"
-        take_links_id(typer, last_launch)
+        take_links_id(last_launch)
     else:
         launch_number = f"https://api.spacexdata.com/v5/launches/{launch}"
-        take_links_id(typer, launch_number)
+        take_links_id(launch_number)
 
 
-def main(typer, launch):
+def main(launch):
     try:
-        conect_spacex(typer, launch)
+        conect_spacex(launch)
     except requests.exceptions.HTTPError:
         print("Ошибка подключения")
 
@@ -28,9 +28,8 @@ if __name__ == "__main__":
     parser.add_argument('--ID_launch', help='Введите --ID_launch номер запуска', type=str, default=None)
     args = parser.parse_args()
     args = format(args.ID_launch)
-    typer = "ID_launch"
     if args:
         try:
-            main(typer, args)
+            main(args)
         except SyntaxError:
             print("SyntaxError ошибка ввода")
