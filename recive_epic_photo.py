@@ -10,13 +10,6 @@ def conect_NASA_EPIC(count):
     take_links_epic(EPIC_link, payload, count)
 
 
-def main(args):
-    try:
-        conect_NASA_EPIC(args)
-    except requests.exceptions.HTTPError:
-        print("Ошибка подключения")
-
-
 if __name__ == "__main__":
     from dotenv import load_dotenv, find_dotenv
     load_dotenv(find_dotenv())
@@ -27,6 +20,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
     args = args.EPIC
     try:
-        main(args)
+        conect_NASA_EPIC(args)
     except SyntaxError:
         print("SyntaxError ошибка ввода")
+    except requests.exceptions.HTTPError:
+        print("Ошибка подключения")
+    except NameError:
+        print("Скачивать нечего")
