@@ -22,7 +22,7 @@ if __name__ == "__main__":
     try:
         conect_NASA_EPIC(args)
     except SyntaxError:
-        print("SyntaxError ошибка ввода")
+        print("Не верно введена ссылка")
     except requests.exceptions.HTTPError:
         print("Ошибка подключения")
     except NameError:
