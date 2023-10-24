@@ -13,14 +13,14 @@ First program: 'recive_space_x_photo' enter launch number for a photo from the S
     
     python recive_space_x_photo.py --ID_launch <launch number>
 
-    example of running
+    example of running:
     python recive_space_x_photo.py --ID_launch 5eb87d47ffd86e000604b38a
     
 Second program: 'recive_apod_photo' enter number of APOD photos you would to download from NASA site.
     
     python recive_apod_photo.py <number of photos>
     
-    example of running
+    example of running:
     python recive_apod_photo.py 1
 
     
@@ -28,7 +28,7 @@ Third program: 'recive_epic_photo' enter number of EPIC photos you would to down
     
     python recive_epic_photo.py <number of photos>
     
-    example of running
+    example of running:
     python recive_epic_photo.py 1
 
 If the function does not receive arguments, then the photo of the last launch will be loaded.
@@ -45,6 +45,9 @@ Python3 should already be installed.
 Use pip (or pip3, if there is a conflict with Python2) to install dependencies.
     
     pip install -r requirements.txt
+
+### environment variables
+For the program to function, you will need the following environment variables: NASA_TOKEN, TG_TOKEN, CHAT_ID
 
 ### Project Goals
 The code is written for educational purposes on online-course for web-developers dvmn.org.
