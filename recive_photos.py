@@ -29,9 +29,7 @@ def take_links_apod(apod_link, payload) -> list:
 
 def take_links_epic(epic_link, payload, count) -> list:
     response = requests.get(epic_link, params=payload)
-    print("response.status_code", response.status_code)
     response.raise_for_status()
-    print("response.status_code", response.status_code)
     texts = response.json()
     for i in range(count):
         name = texts[i]["image"]

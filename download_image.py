@@ -12,4 +12,4 @@ def download_image(name, photo_format, down_load_link, i):
         with open(path, 'wb') as file:
             file.write(response.content)
     except requests.HTTPError:
-        print("Вы ввели неправильную ссылку")
+        print("Вы ввели неправильную ссылку для загрузки фото")

@@ -3,9 +3,11 @@ import argparse
 import os
 from recive_photos import take_links_apod
 from download_image import download_image
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 
 
-def conect_NASA_APOD(payload):
+def conect_nasa_apod(payload):
     apod_link = 'https://api.nasa.gov/planetary/apod'
     apod_info = take_links_apod(apod_link, payload)
     apod_info = apod_info[0]
@@ -20,8 +22,7 @@ def conect_NASA_APOD(payload):
 
 
 if __name__ == "__main__":
-    from dotenv import load_dotenv, find_dotenv
-    load_dotenv(find_dotenv())
+    
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
@@ -30,7 +31,7 @@ if __name__ == "__main__":
     args = args.APOD
     payload = {"api_key": os.getenv("NASA_TOKEN"), "count": args}
     try:
-        conect_NASA_APOD(payload)
+        conect_nasa_apod(payload)
     except SyntaxError:
         print("Не верно введена ссылка")
     except requests.exceptions.HTTPError:

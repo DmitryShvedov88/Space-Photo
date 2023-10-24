@@ -1,6 +1,8 @@
 import requests
 import argparse
 from recive_photos import take_links_id
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 
 
 def conect_spacex(launch):
@@ -13,8 +15,7 @@ def conect_spacex(launch):
 
 
 if __name__ == "__main__":
-    from dotenv import load_dotenv, find_dotenv
-    load_dotenv(find_dotenv())
+    
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )

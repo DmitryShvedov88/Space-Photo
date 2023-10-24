@@ -11,16 +11,26 @@ The second part is the publication of them in the Telegram channel.
 
 First program: 'recive_space_x_photo' enter launch number for a photo from the SpaceX Website, if you don't, just start program, you will automatically get the newest.
     
-    python recive_space_x_photo.py <launch number>
+    python recive_space_x_photo.py --ID_launch <launch number>
+
+    example of running
+    python recive_space_x_photo.py --ID_launch 5eb87d47ffd86e000604b38a
     
 Second program: 'recive_apod_photo' enter number of APOD photos you would to download from NASA site.
     
     python recive_apod_photo.py <number of photos>
     
+    example of running
+    python recive_apod_photo.py 1
+
+    
 Third program: 'recive_epic_photo' enter number of EPIC photos you would to download from NASA site.
     
     python recive_epic_photo.py <number of photos>
     
+    example of running
+    python recive_epic_photo.py 1
+
 If the function does not receive arguments, then the photo of the last launch will be loaded.
 
 The second part sends photos from the list to the telegram channel. You can set the time how often the photos will be published. If you do not set a timer, by default it will happen once every 4 hours.
