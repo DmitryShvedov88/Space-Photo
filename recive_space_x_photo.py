@@ -28,8 +28,8 @@ if __name__ == "__main__":
         try:
             conect_spacex(args)
         except SyntaxError:
-            print("Не верно введена ссылка")
+            print("<h1>SyntaxError: invalid syntax</h1>")
         except requests.exceptions.HTTPError:
-            print("Ошибка подключения")
+            print("Вы ввели неправильную ссылку или неверный токен.")
         except NameError:
-            print("Скачивать нечего")
+            print("По этой ссылке не фотом для скачивания")
