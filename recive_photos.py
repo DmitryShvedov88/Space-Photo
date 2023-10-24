@@ -27,11 +27,11 @@ def take_links_apod(apod_link, payload) -> list:
     return [links, texts]
 
 
-def take_links_epic(epic_link, payload, count) -> list:
+def take_links_epic(epic_link, payload, epic__number) -> list:
     response = requests.get(epic_link, params=payload)
     response.raise_for_status()
     texts = response.json()
-    for i in range(count):
+    for i in range(epic__number):
         name = texts[i]["image"]
         date = texts[i]["date"]
         date = datetime.datetime.fromisoformat(date)

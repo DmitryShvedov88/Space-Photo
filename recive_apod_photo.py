@@ -28,8 +28,8 @@ if __name__ == "__main__":
         )
     parser.add_argument('APOD', help='Введите APOD и кол фотографий для скачивания', type=int, default=1)
     args = parser.parse_args()
-    args = args.APOD
-    payload = {"api_key": os.getenv("NASA_TOKEN"), "count": args}
+    apod_number = args.APOD
+    payload = {"api_key": os.getenv("NASA_TOKEN"), "count": apod_number}
     try:
         conect_nasa_apod(payload)
     except SyntaxError:
