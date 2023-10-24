@@ -1,7 +1,7 @@
 import requests
 import argparse
 import os
-from recive_photos import take_links_apod
+from recive_photos import taker_apod_links
 from download_image import download_image
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
@@ -9,14 +9,14 @@ load_dotenv(find_dotenv())
 
 def conect_nasa_apod(payload):
     apod_link = 'https://api.nasa.gov/planetary/apod'
-    apod_info = take_links_apod(apod_link, payload)
+    apod_info = taker_apod_links(apod_link, payload)
     apod_info = apod_info[0]
     photo_name = "APOD"
     if apod_info:
         print("Ссылки есть")
-        for i, apod in enumerate(apod_info):
+        for number, apod in enumerate(apod_info):
             photo_format = "jpeg"
-            download_image(photo_name, photo_format, apod, i)
+            download_image(photo_name, photo_format, apod, number)
     else:
         print("Ссылок нет")
 
@@ -26,7 +26,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
-    parser.add_argument('APOD', help='Введите APOD и кол фотографий для скачивания', type=int, default=1)
+    parser.add_argument('APOD', help='Введите кол фотографий APOD для скачивания', type=int, default=1)
     args = parser.parse_args()
     apod_number = args.APOD
     payload = {"api_key": os.getenv("NASA_TOKEN"), "count": apod_number}

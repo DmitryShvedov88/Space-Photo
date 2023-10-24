@@ -2,8 +2,8 @@ import requests
 from pathlib import Path
 
 
-def download_image(name, photo_format, down_load_link, i):
-    filename = f'{name}_{i}.{photo_format}'
+def download_image(name, photo_format, down_load_link, number):
+    filename = f'{name}_{number}.{photo_format}'
     try:
         path = Path(f"images/{filename}")
         path.parent.mkdir(parents=True, exist_ok=True)

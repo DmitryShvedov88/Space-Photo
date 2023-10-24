@@ -20,7 +20,7 @@ if __name__ == "__main__":
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
     parser.add_argument(
-        '--ID_launch', help='Введите --ID_launch номер запуска', type=str, default=None
+        '--ID_launch', help='Введите --ID_launch <номер запуска>', type=str, default=None
         )
     args = parser.parse_args()
     id_launch = format(args.ID_launch)

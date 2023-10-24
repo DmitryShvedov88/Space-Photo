@@ -19,7 +19,7 @@ def take_links_id(all_starts) -> list:
         print("Ссылок нет")
 
 
-def take_links_apod(apod_link, payload) -> list:
+def taker_apod_links(apod_link, payload) -> list:
     response = requests.get(apod_link, params=payload)
     response.raise_for_status()
     texts = response.json()
@@ -27,13 +27,13 @@ def take_links_apod(apod_link, payload) -> list:
     return [links, texts]
 
 
-def take_links_epic(epic_link, payload, epic__number) -> list:
+def taker_epic_links(epic_link, payload, epic__number) -> list:
     response = requests.get(epic_link, params=payload)
     response.raise_for_status()
     texts = response.json()
-    for i in range(epic__number):
-        name = texts[i]["image"]
-        date = texts[i]["date"]
+    for number in range(epic__number):
+        name = texts[number]["image"]
+        date = texts[number]["date"]
         date = datetime.datetime.fromisoformat(date)
         date = date.strftime("%Y/%m/%d")
         find_url = f'https://api.nasa.gov/EPIC/archive/natural/{date}/png/{name}.png'
