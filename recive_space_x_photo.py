@@ -22,12 +22,8 @@ def take_links_id(all_starts) -> list:
 
 
 def conect_spacex(id_launch):
-    if id_launch == "None":
-        last_launch = "https://api.spacexdata.com/v5/launches/latest"
-        take_links_id(last_launch)
-    else:
-        launch_number = f"https://api.spacexdata.com/v5/launches/{id_launch}"
-        take_links_id(launch_number)
+    launch_number = f"https://api.spacexdata.com/v5/launches/{id_launch}"
+    take_links_id(launch_number)
 
 
 if __name__ == "__main__":
@@ -35,7 +31,7 @@ if __name__ == "__main__":
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
     parser.add_argument(
-        '--ID_launch', help='Введите --ID_launch <номер запуска>', type=str, default=None
+        '--ID_launch', help='Введите --ID_launch <номер запуска>', type=str, default="latest"
         )
     args = parser.parse_args()
     id_launch = format(args.ID_launch)
