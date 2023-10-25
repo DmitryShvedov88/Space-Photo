@@ -1,10 +1,17 @@
 import requests
 import argparse
 import os
-from recive_photos import taker_apod_links
 from download_image import download_image
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
+
+
+def taker_apod_links(apod_link, payload) -> list:
+    response = requests.get(apod_link, params=payload)
+    response.raise_for_status()
+    texts = response.json()
+    links = [text["url"] for text in texts]
+    return [links, texts]
 
 
 def conect_nasa_apod(payload):
