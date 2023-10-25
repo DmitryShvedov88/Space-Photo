@@ -11,25 +11,19 @@ def taker_apod_links(apod_link, payload) -> list:
     response.raise_for_status()
     texts = response.json()
     links = [text["url"] for text in texts]
-    return [links, texts]
+    return links
 
 
 def conect_nasa_apod(payload):
     apod_link = 'https://api.nasa.gov/planetary/apod'
     apod_info = taker_apod_links(apod_link, payload)
-    apod_info = apod_info[0]
     photo_name = "APOD"
-    if apod_info:
-        print("Ссылки есть")
-        for number, apod in enumerate(apod_info):
-            photo_format = "jpeg"
-            download_image(photo_name, photo_format, apod, number)
-    else:
-        print("Ссылок нет")
+    for number, apod in enumerate(apod_info):
+        photo_format = "jpeg"
+        download_image(photo_name, photo_format, apod, number)
 
 
 if __name__ == "__main__":
-    
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
@@ -44,4 +38,4 @@ if __name__ == "__main__":
     except requests.exceptions.HTTPError:
         print("Вы ввели неправильную ссылку или неверный токен.")
     except NameError:
-        print("По этой ссылке не фотом для скачивания")
+        print("По этой ссылке нет фото для скачивания")

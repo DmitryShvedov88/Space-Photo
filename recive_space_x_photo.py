@@ -31,7 +31,6 @@ def conect_spacex(id_launch):
 
 
 if __name__ == "__main__":
-    
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии по заданным темам с сайтов NASA и SpaceX'
         )
