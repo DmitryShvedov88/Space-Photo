@@ -33,9 +33,5 @@ if __name__ == "__main__":
     payload = {"api_key": os.getenv("NASA_TOKEN"), "count": apod_number}
     try:
         conect_nasa_apod(payload)
-    except SyntaxError:
-        print("<h1>SyntaxError: invalid syntax</h1>")
     except requests.exceptions.HTTPError:
         print("Вы ввели неправильную ссылку или неверный токен.")
-    except NameError:
-        print("По этой ссылке нет фото для скачивания")

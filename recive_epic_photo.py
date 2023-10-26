@@ -33,9 +33,5 @@ if __name__ == "__main__":
     epic__number = args.EPIC
     try:
         taker_epic_links(epic__number, payload)
-    except SyntaxError:
-        print("<h1>SyntaxError: invalid syntax</h1>")
     except requests.exceptions.HTTPError:
         print("Вы ввели неправильную ссылку или неверный токен.")
-    except NameError:
-        print("По этой ссылке не фотом для скачивания")

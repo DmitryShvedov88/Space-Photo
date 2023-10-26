@@ -31,9 +31,5 @@ if __name__ == "__main__":
     launch_id = format(args.launch_ID)
     try:
         take_links_id(launch_id)
-    except SyntaxError:
-        print("<h1>SyntaxError: invalid syntax</h1>")
     except requests.exceptions.HTTPError:
         print("Вы ввели неправильную ссылку или неверный токен.")
-    except NameError:
-        print("По этой ссылке не фотом для скачивания")
