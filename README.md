@@ -36,7 +36,7 @@ Third program: 'recive_epic_photo' enter number of EPIC photos you would to down
     python recive_epic_photo.py 1
     program response:
     download image in folder
-    
+
 If the function does not receive arguments, then the photo of the last launch will be loaded.
 
 The second part sends photos from the list to the telegram channel. You can set the time how often the photos will be published. If you do not set a timer, by default it will happen once every 4 hours.
@@ -53,7 +53,10 @@ Use pip (or pip3, if there is a conflict with Python2) to install dependencies.
     pip install -r requirements.txt
 
 ### environment variables
-For the program to function, you will need the following environment variables: NASA_TOKEN, TG_TOKEN, CHAT_ID
+For the program to function, you will need the following environment variables: NASA_TOKEN, TG_TOKEN, CHAT_ID.
+NASA_TOKEN - is the digital key needed to run two programs: recive_apod_photo, recive_epic_photo.
+TG_TOKEN - is the digital key needed to run TG Bot
+CHAT_ID - is a number of chat, whete you want to push photo
 
 ### Project Goals
 The code is written for educational purposes on online-course for web-developers dvmn.org.

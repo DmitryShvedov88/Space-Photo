@@ -10,4 +10,3 @@ def download_image(name, photo_format, down_load_link, number):
     response.raise_for_status()
     with open(path, 'wb') as file:
         file.write(response.content)
-    
