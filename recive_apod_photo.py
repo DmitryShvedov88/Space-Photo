@@ -15,9 +15,9 @@ def take_apod_links(apod_link, payload) -> list:
 
 def conect_nasa_apod(payload):
     apod_link = 'https://api.nasa.gov/planetary/apod'
-    apod_info = take_apod_links(apod_link, payload)
+    apod_photos_urls = take_apod_links(apod_link, payload)
     photo_name = "APOD"
-    for number, apod in enumerate(apod_info):
+    for number, apod in enumerate(apod_photos_urls):
         photo_format = "jpeg"
         download_image(photo_name, photo_format, apod, number)
 
