@@ -40,18 +40,17 @@ if __name__ == "__main__":
         description='Программа позволяет загружать фотографии из деревтории в ТГ Бот'
         )
     parser.add_argument(
-        '--Time', help='Введите --Time ожидания публикации', type=int
+        '--Time',
+        help='Введите --Time ожидания публикации',
+        type=int,
+        default=4
         )
     args = parser.parse_args()
     params = {
         "Time": args.Time,
         }
     for typer in params.items():
-        if typer[1]:
-            try:
-                main(typer[1])
-            except:
-                print("Ошибка ввода")
-
-    if params["Time"] is None:
-        main(timer=4)
+        try:
+            main(typer[1])
+        except:
+            print("Ошибка ввода")
