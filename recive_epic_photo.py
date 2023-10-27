@@ -10,10 +10,9 @@ def taker_epic_links(epic__number, payload) -> list:
     epic_link = "https://api.nasa.gov/EPIC/api/natural/images"
     response = requests.get(epic_link, params=payload)
     response.raise_for_status()
-    photos_informarion = response.json()
-    print(photos_informarion)
+    photos = response.json()
     for number in range(epic__number):
-        name, date = photos_informarion[number]["image"], photos_informarion[number]["date"]
+        name, date = photos[number]["image"], photos[number]["date"]
         date = datetime.datetime.fromisoformat(date)
         date = date.strftime("%Y/%m/%d")
         epic_url = f'https://api.nasa.gov/EPIC/archive/natural/{date}/png/{name}.png'
