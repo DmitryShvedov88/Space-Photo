@@ -9,13 +9,11 @@ def take_links_id(id_launch) -> list:
     response.raise_for_status()
     photos = response.json()
     links = photos["links"]["flickr"]["original"]
-    photo_name = "SpaceX"
-    photo_format = "jpeg"
+    photo_name, photo_format = "SpaceX", "jpeg"
     if not links:
         print("Ссылок нет")
     else:
         print("Ссылки есть")
-        links = photos["links"]["flickr"]["original"]
         for i, foto in enumerate(links):
             download_image(photo_name, photo_format, foto, i)
 
