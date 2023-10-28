@@ -31,4 +31,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
     epic__number = args.EPIC
     taker_epic_links(epic__number, payload)
-
