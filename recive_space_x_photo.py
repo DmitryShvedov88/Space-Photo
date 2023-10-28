@@ -12,10 +12,10 @@ def take_links_id(id_launch) -> list:
     photo_name, photo_format = "SpaceX", "jpeg"
     if not links:
         print("Ссылок нет")
-    else:
-        print("Ссылки есть")
-        for i, foto in enumerate(links):
-            download_image(photo_name, photo_format, foto, i)
+        return
+    print("Ссылки есть")
+    for i, foto in enumerate(links):
+        download_image(photo_name, photo_format, foto, i)
 
 
 if __name__ == "__main__":
