@@ -61,10 +61,13 @@ Use pip (or pip3, if there is a conflict with Python2) to install dependencies.
 
 ### environment variables
 For the program to function, you will need the following environment variables: NASA_TOKEN, TG_TOKEN, CHAT_ID.
+
 NASA_TOKEN - is the digital key needed to run two programs: recive_apod_photo, recive_epic_photo.
 You can get it [here](https://api.nasa.gov/)
+
 TG_TOKEN - is the digital key needed to run TG Bot
 You can get it using [Botfather](https://t.me/BotFather) 
+
 CHAT_ID - is a number of chat, where you want to push photo.
 It s easy to find it is the name of the bot after @. "@BOT_NAME"
 
