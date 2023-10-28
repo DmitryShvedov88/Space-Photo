@@ -23,11 +23,9 @@ if __name__ == "__main__":
         description='Программа позволяет загружать фотографии с сайта SpaceX'
         )
     parser.add_argument(
-        '--ID_launch', help='Введите --launch_ID <номер запуска>', type=str, default="latest"
+        '--launch_ID', help='Введите --launch_ID <номер запуска>', type=str, default="latest"
         )
     args = parser.parse_args()
     launch_id = format(args.launch_ID)
-    try:
-        take_links_id(launch_id)
-    except requests.exceptions.HTTPError:
-        print("Вы ввели неправильную ссылку или неверный токен.")
+    take_links_id(launch_id)
+

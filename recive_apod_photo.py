@@ -31,7 +31,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
     apod_number = args.APOD
     payload = {"api_key": os.getenv("NASA_TOKEN"), "count": apod_number}
-    try:
-        conect_nasa_apod(payload)
-    except requests.exceptions.HTTPError:
-        print("Вы ввели неправильную ссылку или неверный токен.")
+    conect_nasa_apod(payload)

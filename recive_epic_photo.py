@@ -30,7 +30,5 @@ if __name__ == "__main__":
     parser.add_argument('EPIC', help='Введите кол фотографий EPIC для скачивания', type=int, default=1)
     args = parser.parse_args()
     epic__number = args.EPIC
-    try:
-        taker_epic_links(epic__number, payload)
-    except requests.exceptions.HTTPError:
-        print("Вы ввели неправильную ссылку или неверный токен.")
+    taker_epic_links(epic__number, payload)
+
