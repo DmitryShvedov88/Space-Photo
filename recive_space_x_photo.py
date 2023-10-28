@@ -28,4 +28,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
     launch_id = format(args.launch_ID)
     take_links_id(launch_id)
-
