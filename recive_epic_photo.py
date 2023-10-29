@@ -6,7 +6,7 @@ from dotenv import load_dotenv, find_dotenv
 from download_image import download_image
 
 
-def taker_epic_links(epic__number, payload) -> list:
+def take_epic_links(epic__number, payload) -> list:
     epic_link = "https://api.nasa.gov/EPIC/api/natural/images"
     response = requests.get(epic_link, params=payload)
     response.raise_for_status()
@@ -31,4 +31,4 @@ if __name__ == "__main__":
     parser.add_argument('EPIC', help='Введите кол фотографий EPIC для скачивания', type=int, default=1)
     args = parser.parse_args()
     epic__number = args.EPIC
-    taker_epic_links(epic__number, payload)
+    take_epic_links(epic__number, payload)
