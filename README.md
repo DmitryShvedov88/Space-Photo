@@ -41,7 +41,7 @@ The second part sends photos from the list to the telegram channel. You can set 
 
 Fourth program: "photo_pusher" serves to publish photos in a telegram bot to a group. The program publishes photos once in the specified time interval at startup
     
-    python photo_pusher.py --time <how often to publish>
+    python photo_push.py --time <how often to publish>
 
     example of running:
     python photo_pusher.py 1
