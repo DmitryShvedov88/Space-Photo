@@ -8,8 +8,8 @@ from dotenv import load_dotenv, find_dotenv
 def take_apod_links(apod_link, payload) -> list:
     response = requests.get(apod_link, params=payload)
     response.raise_for_status()
-    photos_informarion = response.json()
-    links = [photo_informarion["url"] for photo_informarion in photos_informarion]
+    photos = response.json()
+    links = [photo["url"] for photo in photos]
     return links
 
 
