@@ -1,7 +1,7 @@
 import os
 
 
-def takeFiles():
+def takefiles():
     directory = "C:/Users/nivka/Desktop/Обучение Питон/Мои проекты/images"
     global name
     images = []

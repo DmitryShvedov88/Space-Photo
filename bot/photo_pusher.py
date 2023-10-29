@@ -4,7 +4,7 @@ import time
 import os
 import random
 from dotenv import load_dotenv, find_dotenv
-from image_taker import takeFiles
+from image_taker import takefiles
 
 load_dotenv(find_dotenv())
 
@@ -16,7 +16,7 @@ bot = telegram.Bot(token=TG_Token)
 
 def main(timer):
     timer = timer*60
-    images = takeFiles()
+    images = takefiles()
     i = 0
     while True:
         if i < len(images):
