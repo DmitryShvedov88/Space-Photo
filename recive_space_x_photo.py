@@ -3,7 +3,7 @@ import argparse
 from download_image import download_image
 
 
-def take_links_id(id_launch) -> list:
+def take_links_id(launch_id) -> list:
     spacex_start = f"https://api.spacexdata.com/v5/launches/{id_launch}"
     response = requests.get(spacex_start)
     response.raise_for_status()
