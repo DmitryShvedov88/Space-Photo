@@ -7,7 +7,7 @@ from dotenv import load_dotenv, find_dotenv
 from image_taker import takefiles
 
 
-def main(timer):
+def send_photo(timer):
     timer = timer*60
     images = takefiles(directory)
     i = 0
@@ -49,6 +49,6 @@ if __name__ == "__main__":
         }
     for typer in params.items():
         try:
-            main(typer[1])
+            send_photo(typer[1])
         except:
-            print("Ошибка ввода")
+            send_photo("Ошибка ввода")
