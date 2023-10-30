@@ -8,7 +8,8 @@ from image_taker import takefiles
 
 
 def send_photo(timer):
-    timer = timer*60
+    transfer_coefficient = 60
+    timer = timer*transfer_coefficient
     images = takefiles(directory)
     i = 0
     while True:
