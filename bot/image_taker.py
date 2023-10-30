@@ -1,8 +1,7 @@
 import os
 
 
-def takefiles():
-    directory = "C:/Users/nivka/Desktop/Обучение Питон/Мои проекты/images"
+def takefiles(directory):
     images = []
     try:
         filesindir = os.listdir(directory)

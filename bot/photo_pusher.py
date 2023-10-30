@@ -11,12 +11,13 @@ load_dotenv(find_dotenv())
 
 TG_Token = os.getenv("TG_TOKEN")
 chat_id = os.getenv("CHAT_ID")
+directory = os.getenv("DIRECTORY")
 bot = telegram.Bot(token=TG_Token)
 
 
 def main(timer):
     timer = timer*60
-    images = takefiles()
+    images = takefiles(directory)
     i = 0
     while True:
         if i < len(images):
