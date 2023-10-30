@@ -4,7 +4,16 @@ import time
 import os
 import random
 from dotenv import load_dotenv, find_dotenv
-from image_taker import takefiles
+
+
+def takefiles(directory):
+    images = []
+    filesindir = os.listdir(directory)
+    for filesindirs in filesindir:
+        name = os.path.join(filesindirs)
+        path = os.path.join(str(directory), name)
+        images.append(path)
+    return images
 
 
 def send_photo(timer):
