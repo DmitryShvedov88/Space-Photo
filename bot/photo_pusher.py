@@ -21,16 +21,13 @@ def send_photo(timer):
     timer = timer*transfer_coefficient
     images = takefiles(directory)
     i = 0
-    while True:
-        if i < len(images):
-            for i in range(len(images)):
-                time.sleep(timer)
-                image = images[i]
-                print(image)
-                i += 1
-                bot.send_document(
-                    chat_id=chat_id, document=open(f'{image}', 'rb')
-                    )
+    for number, image in enumerate(images):
+        if number <= len(images):
+            time.sleep(timer)
+            i += 1
+            bot.send_document(
+                chat_id=chat_id, document=open(f'{image}', 'rb')
+                )
         else:
             time.sleep(timer)
             random_number = random.randint(0, (len(images)-1))
@@ -58,7 +55,4 @@ if __name__ == "__main__":
         "Time": args.Time,
         }
     for typer in params.items():
-        try:
-            send_photo(typer[1])
-        except:
-            send_photo("Ошибка ввода")
+        send_photo(typer[1])
