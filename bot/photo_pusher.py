@@ -17,7 +17,7 @@ def takefiles(directory):
 
 
 def send_photo(timer):
-    transfer_coefficient = 60
+    transfer_coefficient = 10
     timer = timer*transfer_coefficient
     images = takefiles(directory)
     i = 0
@@ -25,14 +25,14 @@ def send_photo(timer):
         if number <= len(images):
             time.sleep(timer)
             i += 1
-            bot.send_document(
-                chat_id=chat_id, document=open(f'{image}', 'rb')
-                )
+            with open(f'{image}', 'rb') as img:
+                bot.send_document(chat_id=chat_id, document=img)
         else:
             time.sleep(timer)
             random_number = random.randint(0, (len(images)-1))
             image = images[random_number]
-            bot.send_document(chat_id=chat_id, document=open(f'{image}', 'rb'))
+            with open(f'{image}', 'rb') as img:
+                bot.send_document(chat_id=chat_id, document=img)
 
 
 if __name__ == "__main__":
@@ -45,14 +45,14 @@ if __name__ == "__main__":
         description='Программа позволяет загружать фотографии из деревтории в ТГ Бот'
         )
     parser.add_argument(
-        '--Time',
-        help='Введите --Time ожидания публикации',
+        '--time',
+        help='Введите --time ожидания публикации',
         type=int,
         default=4
         )
     args = parser.parse_args()
     params = {
-        "Time": args.Time,
+        "time": args.time,
         }
     for typer in params.items():
         send_photo(typer[1])
