@@ -21,18 +21,17 @@ def send_photos(timer):
     timer = timer*transfer_coefficient
     images = takefiles(directory)
     i = 0
-    for number, image in enumerate(images):
-        if number <= len(images):
-            time.sleep(timer)
-            i += 1
-            with open(f'{image}', 'rb') as img:
-                bot.send_document(chat_id=chat_id, document=img)
-        else:
-            time.sleep(timer)
-            random_number = random.randint(0, (len(images)-1))
-            image = images[random_number]
-            with open(f'{image}', 'rb') as img:
-                bot.send_document(chat_id=chat_id, document=img)
+    for image in images:
+        time.sleep(timer)
+        i += 1
+        with open(f'{image}', 'rb') as img:
+            bot.send_document(chat_id=chat_id, document=img)
+    while True:
+        time.sleep(timer)
+        random_number = random.randint(0, (len(images)-1))
+        image = images[random_number]
+        with open(f'{image}', 'rb') as img:
+            bot.send_document(chat_id=chat_id, document=img)
 
 
 if __name__ == "__main__":
