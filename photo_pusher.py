@@ -51,8 +51,5 @@ if __name__ == "__main__":
         default=4
         )
     args = parser.parse_args()
-    params = {
-        "time": args.time,
-        }
-    for typer in params.items():
-        send_photo(typer[1])
+    timer = args.time
+    send_photos(timer)
