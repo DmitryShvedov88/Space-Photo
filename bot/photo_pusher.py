@@ -37,10 +37,10 @@ def send_photo(timer):
 
 if __name__ == "__main__":
     load_dotenv(find_dotenv())
-    TG_Token = os.getenv("TG_TOKEN")
+    tg_token = os.getenv("TG_TOKEN")
     chat_id = os.getenv("CHAT_ID")
     directory = os.getenv("DIRECTORY")
-    bot = telegram.Bot(token=TG_Token)
+    bot = telegram.Bot(token=tg_token)
     parser = argparse.ArgumentParser(
         description='Программа позволяет загружать фотографии из деревтории в ТГ Бот'
         )
