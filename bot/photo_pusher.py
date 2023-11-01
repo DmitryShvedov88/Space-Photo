@@ -16,7 +16,7 @@ def takefiles(directory):
     return images
 
 
-def send_photo(timer):
+def send_photos(timer):
     transfer_coefficient = 10
     timer = timer*transfer_coefficient
     images = takefiles(directory)
