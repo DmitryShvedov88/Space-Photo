@@ -12,14 +12,17 @@ def take_epic_links(epic__number, payload) -> list:
     response.raise_for_status()
     photos = response.json()
     for number, photo in enumerate(photos):
-        if number <= epic__number and number <= len(photos):
-            name, date = photo["image"], photo["date"]
-            date = datetime.datetime.fromisoformat(date)
-            date = date.strftime("%Y/%m/%d")
-            epic_url = f'https://api.nasa.gov/EPIC/archive/natural/{date}/png/{name}.png'
-            photo_name = "EPIC"
-            photo_format = "png"
-            download_image(photo_name, photo_format, epic_url, date)
+        if number >= epic__number:
+            return
+        if number >= len(photos):
+            return
+        name, date = photo["image"], photo["date"]
+        date = datetime.datetime.fromisoformat(date)
+        date = date.strftime("%Y/%m/%d")
+        epic_url = f'https://api.nasa.gov/EPIC/archive/natural/{date}/png/{name}.png'
+        photo_name = "EPIC"
+        photo_format = "png"
+        download_image(photo_name, photo_format, epic_url, date)
 
 
 if __name__ == "__main__":
