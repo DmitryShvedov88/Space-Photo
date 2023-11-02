@@ -20,17 +20,15 @@ def send_photos(timer):
     transfer_coefficient = 10
     timer = timer*transfer_coefficient
     images = takefiles(directory)
-    i = 0
-    for image in images:
-        time.sleep(timer)
-        i += 1
-        with open(f'{image}', 'rb') as img:
-            bot.send_document(chat_id=chat_id, document=img)
     while True:
+        for image in images:
+            time.sleep(timer)
+            with open(image, 'rb') as img:
+                bot.send_document(chat_id=chat_id, document=img)
         time.sleep(timer)
-        random_number = random.randint(0, (len(images)-1))
+        random_number = random.shuffle(images)
         image = images[random_number]
-        with open(f'{image}', 'rb') as img:
+        with open(image, 'rb') as img:
             bot.send_document(chat_id=chat_id, document=img)
 
 
